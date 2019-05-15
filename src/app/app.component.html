@@ -1,0 +1,30 @@
+<section class="todolistapp">
+  <header class="header">
+    <h1>Todolist</h1>
+    <div class="md-form">
+      <input class="toggle" type="search" [(ngModel)]="searchText" placeholder="Search">
+    </div>
+    <ul *ngFor="let todolist of todolists | filter: searchText">
+      <li>{{todolist.title}}</li>
+    </ul>
+    <input  class="new-todolist"  placeholder="What needs to be done?" autofocus="" 
+    [(ngModel)]="newTodolist.title" (keyup.enter)="addTodolist()">
+  </header>
+  <section class="main" *ngIf="todolists.length > 0">
+    <ul class="todolist-list" >
+      <li *ngFor="let todolist of todolists " [class.completed]="todolist.complete">
+        <div class="view">
+          <input class="toggle"  type="checkbox" (click)="toggleTodolistComplete(todolist)" [checked]="todolist.complete">
+          <label>{{todolist.title}}  </label>
+          <label>  DueDate: <input  type="date" > {{todolist.duedate}}</label>
+           
+          <button class="destroy" (click)="removeTodolist(todolist)"></button>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <footer class="footer" *ngIf="todolists.length > 0">
+    <span class="todolist-count"><strong>{{todolists.length}}</strong> {{todolists.length == 1 ? 'item' : 'items'}} left</span>
+  </footer>
+</section>
+
