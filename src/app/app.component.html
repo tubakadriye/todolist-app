@@ -1,7 +1,7 @@
 <section class="todolistapp">
   <header class="header">
     <h1>Todolist</h1>
-    <div class="md-form">
+    <div>
       <input class="toggle" type="search" [(ngModel)]="searchText" placeholder="Search">
     </div>
     <ul *ngFor="let todolist of todolists | filter: searchText">
