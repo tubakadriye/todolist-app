@@ -1,8 +1,13 @@
 <section class="todolistapp">
   <header class="header">
     <h1>Todolist</h1>
-    <div>
-      <input class="toggle" type="search" [(ngModel)]="searchText" placeholder="Search">
+   <div class="text-wrapper">
+      <div class="filter-wrapper">
+    <p>Filter todos: <input type="text" class="input" [(ngModel)]="query" placeholder= "search"></p>
+      <ul >
+        <li class="filter-result" *ngFor="let todolist of todolists | filterTodolists:query">    
+      </ul> 
+      </div>
     </div>
     <ul *ngFor="let todolist of todolists | filter: searchText">
       <li>{{todolist.title}}</li>
