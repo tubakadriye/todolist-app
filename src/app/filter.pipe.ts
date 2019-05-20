@@ -1,22 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filter'
+  name: 'filterTodolists'
 })
-export class FilterPipe implements PipeTransform {
+export class FilterTodolistsPipe implements PipeTransform {
 
-  transform(items: any[], searchText: string): any[] {
-    if (!items) {
-      return null;
-    }
-    if (!searchText) {
-      return null;
-    }
-    searchText = searchText.toLocaleLowerCase();
-
-    return items.filter(it => {
-      return it.toLocaleLowerCase().includes(searchText);
-    });
+  transform(todolists: any[], query: string): any {
+    console.log('filter for', query);
+    return todolists.filter(todolist => todolist.title.indexOf(query) !== -1);
   }
-
 }
