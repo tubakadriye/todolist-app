@@ -9,6 +9,7 @@ import { TodolistDataService } from './todolist-data.service';
   providers: [TodolistDataService]
 })
 export class AppComponent {
+  public query = "";
   newTodolist: Todolist = new Todolist();
    // Ask Angular DI system to inject the dependency
   // associated with the dependency injection token `TodolistDataService`
